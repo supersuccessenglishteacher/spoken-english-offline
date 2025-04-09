@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Vocabulary App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      margin: 0;
+      padding: 20px;
+    }
+    .header {
+      background-color: #6a1b9a;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .header p {
+      margin: 5px 0;
+    }
+    .tagline {
+      background-color: #ec407a;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background-color: #8e24aa;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #fce4ec;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #388e3c;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Super Success Computer Education Center</h1>
+    <p>22/1 Bipin Paul Road, Nimta Shyamaprasad Nagar, Kolkata 700049</p>
+    <p>📞 8017247298 / 9874152080</p>
+  </div>
+
+  <div class="tagline">
+    🎯 ইংরেজি শেখা এখন আরও সহজ ও মজাদার – শব্দ জানুন, উচ্চারণ শুনুন, আর আত্মবিশ্বাস গড়ে তুলুন! 🎧
+  </div>
+
+  <h2 style="text-align:center; margin-top:20px;">📘 Computer & Technology Vocabulary</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sl.No.</th>
+        <th>English</th>
+        <th>বাংলা</th>
+        <th>Pronunciation</th>
+        <th>🔊 EN</th>
+        <th>🔊 BN</th>
+      </tr>
+    </thead>
+    <tbody id="vocabTable"></tbody>
+  </table>
+
+  <div class="footer">
+    ✨ টিপস্: প্রতিদিন ৫টি নতুন শব্দ চর্চা করুন এবং বারবার শুনে উচ্চারণ প্র্যাকটিস করুন!
+  </div>
+
+  <script>
+    const words = [
+      ["Computer", "কম্পিউটার", "কম-পিউ-টার"],
+      ["Laptop", "ল্যাপটপ", "ল্যাপ-টপ"],
+      ["Mouse", "মাউস", "মাউস"],
+      ["Keyboard", "কীবোর্ড", "কী-বোর্ড"],
+      ["Monitor", "মনিটর", "মা-নি-টার"],
+      ["Printer", "প্রিন্টার", "প্রিন্ট-টার"],
+      ["Scanner", "স্ক্যানার", "স্ক্যান-নার"],
+      ["USB Cable", "ইউএসবি তার", "ইউ-এস-বি কেই-বল"],
+      ["Charger", "চার্জার", "চার-জার"],
+      ["Headphone", "হেডফোন", "হেড-ফোন"],
+      ["Speaker", "স্পিকার", "স্পি-কার"],
+      ["Pen drive", "পেনড্রাইভ", "পেন-ড্রাইভ"],
+      ["Mobile Phone", "মোবাইল ফোন", "মো-বাইল ফোন"],
+      ["Tablet", "ট্যাবলেট", "ট্যাব-লেট"],
+      ["Remote", "রিমোট", "রি-মোট"]
+    ];
+
+    const table = document.getElementById("vocabTable");
+
+    words.forEach((word, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${word[0]}</td>
+        <td>${word[1]}</td>
+        <td>${word[2]}</td>
+        <td><button onclick="speak('${word[0]}', 'en-US')">▶️</button></td>
+        <td><button onclick="speak('${word[1]}', 'bn-IN')">▶️</button></td>
+      `;
+      table.appendChild(row);
+    });
+
+    function speak(text, lang) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = lang;
+      speechSynthesis.speak(utter);
+    }
+  </script>
+</body>
+</html>
